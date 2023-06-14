@@ -42,21 +42,21 @@
 3. Haptic feedback when removing or completing an item on the list 💥
 4. If the list is empty, a text indicating it. 🤖
 
-#### App UI
+# App UI
 
-### Splash Screen
+### Splash Screen 🎨
 
    <img src="/assets/splash-screen.png" width="200px" height="400px" alt="splash screenimage example"/>
 
-### Initial Screen
+### Initial Screen 💥
 
    <img src="/assets/initial-screen.png" width="200px" height="400px" alt="initial screen image example"/>
 
-### List with items
+### List with items 👾
 
    <img src="/assets/items-filled.png" width="200px" height="400px" alt="list filled image example"/>
 
-### Editing an item
+### Editing an item 🎢
 
    <img src="/assets/editing-item.png" width="200px" height="400px" alt="editing image example"/>
 
