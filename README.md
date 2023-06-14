@@ -1,4 +1,4 @@
-# Wap Store FrontEnd Challenge 📲
+# WAP-STORE FRONT-END CHALLENGE 📲
 
 ## Grocery List App 🥦 🥩 🍅
 
