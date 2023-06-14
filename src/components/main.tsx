@@ -162,7 +162,7 @@ export function Main() {
         )}
         estimatedItemSize={62}
         ListEmptyComponent={() => (
-          <Text style={styles.emptyList}>A lista está vazia</Text>
+          <Text style={styles.emptyList}>Nenhum item na lista</Text>
         )}
       />
 
@@ -215,7 +215,6 @@ export function Main() {
               <Pressable style={styles.editModalClose}>
                 <MaterialIcons
                   onPress={() => {
-                    console.log(editingItem);
                     updateListItemName(editingItem?.id, editingItem?.title);
                     setEditingItem(undefined);
                   }}
@@ -256,7 +255,11 @@ const styles = StyleSheet.create({
     height: 20,
   },
   emptyList: {
+    color: colors.gray,
+    padding: 15,
     textAlign: "center",
+    fontFamily: fontsVariant.emptyList.fontFamily,
+    fontSize: fontsVariant.emptyList.fontSize,
   },
   completedItem: {
     flexDirection: "row",
@@ -268,7 +271,7 @@ const styles = StyleSheet.create({
     padding: 18,
     alignItems: "center",
     backgroundColor: colors.lightgreen,
-    width: "100%",
+    width: "99%",
     justifyContent: "space-between",
   },
   incompleteItem: {
@@ -281,7 +284,7 @@ const styles = StyleSheet.create({
     padding: 18,
     alignItems: "center",
     backgroundColor: "white",
-    width: "100%",
+    width: "99%",
     justifyContent: "space-between",
   },
   newItemInputContainer: {
@@ -293,6 +296,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   newItemInput: {
+    fontSize: fontsVariant.body.fontSize,
     backgroundColor: "white",
     padding: 6,
     paddingVertical: 14,
