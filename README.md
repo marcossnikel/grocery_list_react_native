@@ -6,10 +6,13 @@
 
 1. git clone no projeto
 2. instalar as dependencias necessárias
-   - npm install
+   - `npm install`
 3. para rodar o projeto, pode utilizar
-   - npm run ios
-   - npm run android
+   - `npm run ios`
+   - `npm run android`
+
+- Não foi habilitado o run pelo expo pois alguma das libs vão além do expo go, o que poderia ser feito é gerar uma build via eas com certificado, porém,
+  para tal ação é necessário uma conta paga de apple developer ou estar vínculado a alguma equipe oficial.
 
 #### O app consiste em uma aplicação onde o usúario consegue controlar uma lista de compras para organizar suas compras, o usúario pode realizar diversas ações como por exemplo :
 
@@ -37,13 +40,19 @@
 
 - Para estilização, foi-se utilizado o `Stylesheet.create` default do react native
 
+## SOBRE
+
 ### Porque o FlashList e não o FlatList default do React Native ?
 
 - Além do fato de ser mais facil a vizualização do código e entender o que está acontecendo, o principal fator no momento da escolha do FlashList foi a perfromance que ele tras para a aplicação, pois ele evita re-enderizações desnecessárias presentes no FlatList
 
-- (Confira mais sobre a FlashList)[https://github.com/Shopify/flash-list]
+- [Confira mais sobre a FlashList](https://github.com/Shopify/flash-list)
 
-### Storage Local Com React Native MMKV
+### uuid
+
+- Utilizado para gerar id's unicos para cada item da lista, e assim facilitar nas operações de update e delete.
+
+### Storage Local Com React Native MMKVs
 
 - Uma das funcionalidades opcionais era **Persistir os itens da lista para que o usuário possa fechar o app sem perder os dados**, e eu pensei em uma maneira bem legal de fazer isso, que foi utilizando o
   MMKV, que é uma alternativa ao AsyncStorage e possui uma facil implementação e além disso é 30x mais rápido que o async storage.
@@ -55,11 +64,16 @@
 
 - Com isso, os dados persistem mesmo com o fechamento do App.
 
-- (Confira mais sobre o React Native MMKV)[https://github.com/mrousavy/react-native-mmkv]
+- [Confira mais sobre o React Native MMKV](https://github.com/mrousavy/react-native-mmkv)
+
+### Confirmação de delete do usúario
+
+- Para essa funcionalidade, utilizei o **Alert** disponível do react native, ao usúario clicar no icone de delecao, abre se um alert para a confirmação da ação, e apenas se
+  o usuario confirma dentro do alert que a deleção é feita
 
 ### Retorno tátil com Haptics
 
 - Uma das sugestões de funcionalidades foi a confirmação de aúdio quando um item é concluido ou removido, e por mais que seja uma idea muito legal, quis abordar uma maneira diferente, muitos usúarios hoje em dia não possuem o audio do celular ligado, ficam apenas no modo vibração...
   Ou mesmo pensando em talvez usúarios com alguma deficiençia auditiva, o que eu eu acabei implementando no app foi um retorno tátil ao invéz do som, como o que ocorre ao, por exemplo , ao curtir uma publicação no Twitter, para isso, utilizei a biblioteca do Haptics que ja é bem consolidade e tem uma boa reputação com a comunidade do React Native
 
-- (Confira mais sobre o Haptics)[https://docs.expo.dev/versions/latest/sdk/haptics/]
+- [Confira mais sobre o Haptics](https://docs.expo.dev/versions/latest/sdk/haptics/)
