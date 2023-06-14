@@ -1,34 +1,22 @@
-# WEB-STORE FRONT-END CHALLENGE 📲
+# Wap Store FrontEnd Challenge 📲
 
 ## Grocery List App 🥦 🥩 🍅
 
-- Como rodar o projeto em sua máquina 🚀🚀🚀
+- In this app, users can manage a list of items, making it a convenient tool for organizing their shopping experience at supermarkets or grocery stores.
 
-1. git clone no projeto
-2. instalar as dependencias necessárias
+### Running locally 🚀🚀🚀
+
+1. git clone git@github.com:marcossnikel/react-native-grocery-list.git
+
+2. Install the necessary dependencies
    - `npm install`
-3. para rodar o projeto, pode utilizar
+3. To run the project, you can use either of the following commands:
    - `npm run ios`
    - `npm run android`
 
-- Não foi habilitado o run pelo expo pois alguma das libs vão além do expo go, o que poderia ser feito é gerar uma build via eas com certificado, porém,
-  para tal ação é necessário uma conta paga de apple developer ou estar vínculado a alguma equipe oficial.
+- Expo run was not enabled because some of the libraries go beyond Expo Go. One possible solution would be to generate a build via EAS with a certificate. However, for such action, you need a paid Apple Developer account or be associated with an official team.
 
-#### O app consiste em uma aplicação onde o usúario consegue controlar uma lista de compras para organizar suas compras, o usúario pode realizar diversas ações como por exemplo :
-
-1. Adicionar um item novo a lista 🏪
-2. Completar o item da lista e com isso recebe um feedback visual ✅
-3. Deletar um item da lista 🗑️
-4. Atualizar o nome de um item da lista. 🆙
-
-#### O App também possui funcionalidades como :
-
-1. Confirmação de deleção para evitar possíveis deleções indesejadas 👍🏻
-2. Dados persistem mesmo com o fechamento do app. 🧵
-3. Retorno tátil ao remover ou completar um item da lista 💥
-4. Caso a lista esteja vazia, um texto indicando 🤖
-
-## Tecnologias utilizadas 📲
+## Technologies used 📲
 
 1. Expo Google Fonts
 2. React Native Community CheckBox
@@ -38,42 +26,67 @@
 6. Expo Vector Icons
 7. Haptics
 
-- Para estilização, foi-se utilizado o `Stylesheet.create` default do react native
+- For styling, the default `Stylesheet.create` from React Native was used.
 
-## SOBRE
+#### The app is an application where the user can manage a shopping list to organize their purchases. The user can perform various actions, such as:
 
-### Porque o FlashList e não o FlatList default do React Native ?
+1. Add a new item to the list 🏪
+2. Complete an item on the list and receive visual and tactile feedback ✅
+3. Delete an item from the list 🗑️
+4. Update the name of an item on the list. 🆙
 
-- Além do fato de ser mais facil a vizualização do código e entender o que está acontecendo, o principal fator no momento da escolha do FlashList foi a perfromance que ele tras para a aplicação, pois ele evita re-enderizações desnecessárias presentes no FlatList
+#### The app also includes features such as:
 
-- [Confira mais sobre a FlashList](https://github.com/Shopify/flash-list)
+1. Deletion confirmation to prevent unintended deletions 👍🏻
+2. Data persistence even when the app is closed. 🧵
+3. Haptic feedback when removing or completing an item on the list 💥
+4. If the list is empty, a text indicating it. 🤖
+
+#### App UI
+
+1. Splash Screen
+   ![App splash screen](/assets/splash-screen.png)
+
+2. Initial Screen
+   ![Initial app screen](/assets/initial-screen.png)
+
+3. List with items
+   ![List with items](/assets/items-filled.png)
+
+4. Editing an item
+   ![Editing an item](/assets/editing-item.png)
+
+## About Choosed Stack
+
+### Why FlashList instead of the default FlatList in React Native?
+
+- The main factor in choosing FlashList was its performance benefits for the application, as it avoids unnecessary re-rendering present in FlatList.
+
+- [Learn more about FlashList](https://github.com/Shopify/flash-list)
 
 ### uuid
 
-- Utilizado para gerar id's unicos para cada item da lista, e assim facilitar nas operações de update e delete.
+- Used to generate unique IDs for each item in the list, making it easier to perform update and delete operations.
 
-### Storage Local Com React Native MMKVs
+### Local Storage with React Native MMKVs
 
-- Uma das funcionalidades opcionais era **Persistir os itens da lista para que o usuário possa fechar o app sem perder os dados**, e eu pensei em uma maneira bem legal de fazer isso, que foi utilizando o
-  MMKV, que é uma alternativa ao AsyncStorage e possui uma facil implementação e além disso é 30x mais rápido que o async storage.
+- One of the optional features was to **persist the list items so that the user can close the app without losing data**. I thought of a cool way to do this by using MMKV, which is an alternative to AsyncStorage and is 30x faster than async storage.
 
-- A implementação dele é bem facil e a documentação é bem simples de entender, na pasta **utils** no arquivo **storage.ts** eu configuro meu storage bem rapidamente
-  e a partir dai todos os métodos ficam disponíveis
+- Its implementation is straightforward, and the documentation is easy to understand. In the **utils** folder, in the **storage.ts** file, I quickly configure my storage, and from there, all the methods are available.
 
-- Criei um useEffect que mapeia toda vez que o meu array de data contendo os items da lista é alterado, sempre que data é alterado eu chamo o método **set** para realizar a alteração no meu storage com o novo data.
+- I created a useEffect that listens for changes in my data array containing the list items. Every time the data is changed, I call the **set** method to update my storage with the new data.
 
-- Com isso, os dados persistem mesmo com o fechamento do App.
+- As a result, the data persists even when the app is closed.
 
-- [Confira mais sobre o React Native MMKV](https://github.com/mrousavy/react-native-mmkv)
+- [Learn more about React Native MMKV](https://github.com/mrousavy/react-native-mmkv)
 
-### Confirmação de delete do usúario
+### User Delete Confirmation
 
-- Para essa funcionalidade, utilizei o **Alert** disponível do react native, ao usúario clicar no icone de delecao, abre se um alert para a confirmação da ação, e apenas se
-  o usuario confirma dentro do alert que a deleção é feita
+- For this functionality, I used the **Alert** component available in React Native. When the user clicks on the delete icon, an alert opens to confirm the action, and the deletion is only performed if the user confirms within the alert.
 
-### Retorno tátil com Haptics
+### Haptic Feedback
 
-- Uma das sugestões de funcionalidades foi a confirmação de aúdio quando um item é concluido ou removido, e por mais que seja uma idea muito legal, quis abordar uma maneira diferente, muitos usúarios hoje em dia não possuem o audio do celular ligado, ficam apenas no modo vibração...
-  Ou mesmo pensando em talvez usúarios com alguma deficiençia auditiva, o que eu eu acabei implementando no app foi um retorno tátil ao invéz do som, como o que ocorre ao, por exemplo , ao curtir uma publicação no Twitter, para isso, utilizei a biblioteca do Haptics que ja é bem consolidade e tem uma boa reputação com a comunidade do React Native
+- One of the suggested features was audio confirmation when an item is completed or removed. While this is a great idea, I wanted to approach it differently because many users today don't have their phone's audio turned on and only use vibration mode.
+  Also, considering users with hearing impairments, I implemented haptic feedback instead of sound, similar to what happens when liking a post on Twitter. For this, I used the Haptics library, which is well-established and highly regarded by the React Native community.
 
-- [Confira mais sobre o Haptics](https://docs.expo.dev/versions/latest/sdk/haptics/)
+- [Learn more about Haptics](https://docs.expo.dev/versions/latest/sdk/haptics/)
