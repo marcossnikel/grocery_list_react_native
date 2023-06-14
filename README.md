@@ -44,17 +44,21 @@
 
 #### App UI
 
-1. Splash Screen
-   ![App splash screen](/assets/splash-screen.png)
+### Splash Screen
 
-2. Initial Screen
-   ![Initial app screen](/assets/initial-screen.png)
+   <img src="splash-screen.png" width="200px" height="400px" alt="splash screenimage example"/>
 
-3. List with items
-   ![List with items](/assets/items-filled.png)
+### Initial Screen
 
-4. Editing an item
-   ![Editing an item](/assets/editing-item.png)
+   <img src="initial-screen.png" width="200px" height="400px" alt="initial screen image example"/>
+
+### List with items
+
+   <img src="items-filled.png" width="200px" height="400px" alt="list filled image example"/>
+
+### Editing an item
+
+   <img src="editing-item.png" width="200px" height="400px" alt="editing image example"/>
 
 ## About Choosed Stack
 
