@@ -60,17 +60,17 @@
 
    <img src="/assets/editing-item.png" width="200px" height="400px" alt="editing image example"/>
 
-## About Choosed Stack
+## About Choosed Stack 📚
 
-### Why FlashList instead of the default FlatList in React Native?
+### Why FlashList instead of the default FlatList in React Native? ✨
 
 - The main factor in choosing FlashList was its performance benefits for the application, as it avoids unnecessary re-rendering present in FlatList.
 
-### uuid
+### uuid 🈴
 
 - Used to generate unique IDs for each item in the list, making it easier to perform update and delete operations.
 
-### Local Storage with React Native MMKVs
+### Local Storage with React Native MMKVs 💿
 
 - One of the optional features was to **persist the list items so that the user can close the app without losing data**. I thought of a cool way to do this by using MMKV, which is an alternative to AsyncStorage and is 30x faster than async storage.
 
@@ -80,11 +80,11 @@
 
 - As a result, the data persists even when the app is closed.
 
-### User Delete Confirmation
+### User Delete Confirmation 🙆🏻‍♂️
 
 - For this functionality, I used the **Alert** component available in React Native. When the user clicks on the delete icon, an alert opens to confirm the action, and the deletion is only performed if the user confirms within the alert.
 
-### Haptic Feedback
+### Haptic Feedback 💧
 
 - One of the suggested features was audio confirmation when an item is completed or removed. While this is a great idea, I wanted to approach it differently because many users today don't have their phone's audio turned on and only use vibration mode.
   Also, considering users with hearing impairments, I implemented haptic feedback instead of sound, similar to what happens when liking a post on Twitter. For this, I used the Haptics library, which is well-established and highly regarded by the React Native community.
