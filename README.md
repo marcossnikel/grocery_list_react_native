@@ -1,4 +1,4 @@
-# WEB-STORE FRONT-END CHALLENGE
+# WEB-STORE FRONT-END CHALLENGE 📲
 
 ## Grocery List App 🥦 🥩 🍅
 
@@ -20,12 +20,12 @@
 
 #### O App também possui funcionalidades como :
 
-1. Confirmação de deleção para evitar possíveis deleções indesejadas
-2. Dados persistem mesmo com o fechamento do app.
-3. Retorno tátil ao remover ou completar um item da lista
-4. Caso a lista esteja vazia, um texto indicando
+1. Confirmação de deleção para evitar possíveis deleções indesejadas 👍🏻
+2. Dados persistem mesmo com o fechamento do app. 🧵
+3. Retorno tátil ao remover ou completar um item da lista 💥
+4. Caso a lista esteja vazia, um texto indicando 🤖
 
-## Tecnologias utilizadas
+## Tecnologias utilizadas 📲
 
 1. Expo Google Fonts
 2. React Native Community CheckBox
