@@ -11,4 +11,9 @@ export const fontsVariant = {
     fontFamily: "Roboto_400Regular",
     fontSize: 16,
   },
+  emptyList: {
+    textAlign: "center",
+    fontFamily: "Roboto_400Regular",
+    fontSize: 14,
+  },
 };
