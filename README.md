@@ -18,13 +18,13 @@
 
 ## Technologies used 📲
 
-1. Expo Google Fonts
-2. React Native Community CheckBox
-3. Shopify Flash List
-4. React Native MMKV
-5. uuid
-6. Expo Vector Icons
-7. Haptics
+1. [Expo Google Fonts](https://github.com/expo/google-fonts)
+2. [React Native Community CheckBox](https://github.com/react-native-checkbox/react-native-checkbox)
+3. [Shopify Flash List](https://github.com/Shopify/flash-list)
+4. [React Native MMKV](https://github.com/mrousavy/react-native-mmkv)
+5. [uuid](https://www.npmjs.com/package/uuid)
+6. [Expo Vector Icons](https://docs.expo.dev/guides/icons/)
+7. [Haptics](https://docs.expo.dev/versions/latest/sdk/haptics/)
 
 - For styling, the default `Stylesheet.create` from React Native was used.
 
@@ -66,8 +66,6 @@
 
 - The main factor in choosing FlashList was its performance benefits for the application, as it avoids unnecessary re-rendering present in FlatList.
 
-- [Learn more about FlashList](https://github.com/Shopify/flash-list)
-
 ### uuid
 
 - Used to generate unique IDs for each item in the list, making it easier to perform update and delete operations.
@@ -82,8 +80,6 @@
 
 - As a result, the data persists even when the app is closed.
 
-- [Learn more about React Native MMKV](https://github.com/mrousavy/react-native-mmkv)
-
 ### User Delete Confirmation
 
 - For this functionality, I used the **Alert** component available in React Native. When the user clicks on the delete icon, an alert opens to confirm the action, and the deletion is only performed if the user confirms within the alert.
@@ -92,5 +88,3 @@
 
 - One of the suggested features was audio confirmation when an item is completed or removed. While this is a great idea, I wanted to approach it differently because many users today don't have their phone's audio turned on and only use vibration mode.
   Also, considering users with hearing impairments, I implemented haptic feedback instead of sound, similar to what happens when liking a post on Twitter. For this, I used the Haptics library, which is well-established and highly regarded by the React Native community.
-
-- [Learn more about Haptics](https://docs.expo.dev/versions/latest/sdk/haptics/)
