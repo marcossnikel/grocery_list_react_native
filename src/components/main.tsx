@@ -13,6 +13,7 @@ import {
   View,
 } from "react-native";
 import { v4 as uuidv4 } from "uuid";
+import * as Haptics from "expo-haptics";
 import { MaterialIcons } from "@expo/vector-icons";
 import { storage } from "../utils/storage";
 import { Text } from "./text";
@@ -44,24 +45,27 @@ export function Main() {
 
   const addListItem = React.useCallback((newItem: ListItem) => {
     setData((prevData) => [...prevData, newItem]);
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
   }, []);
 
   function removeListItemById(id: string) {
     setData((prevData) => prevData.filter((item) => item.id !== id));
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   }
 
   function updateListItemName(id: string, title: string) {
     setData((prevData) => {
-      const item = prevData.find((item) => item.id === id);
+      const updatedData = prevData.map((itemToUpdate) => {
+        if (itemToUpdate.id === id) {
+          return { ...itemToUpdate, title: title };
+        }
+        return itemToUpdate;
+      });
 
-      if (!item) {
-        return prevData;
-      }
-
-      item.title = title;
-
-      return prevData;
+      return updatedData;
     });
+
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
   }
 
   const completedItemsCount = data.filter(({ completed }) => completed).length;
@@ -73,15 +77,7 @@ export function Main() {
       style={{ flex: 1 }}
     >
       <View style={styles.header}>
-        <Text
-          style={{
-            color: "white",
-            fontFamily: fontsVariant.body.fontFamily,
-            fontSize: fontsVariant.body.fontSize,
-          }}
-        >
-          Lista de compras
-        </Text>
+        <Text style={styles.headerTitle}>Lista de compras</Text>
 
         <Text style={{ color: "white" }}>
           {completedItemsCount} / {totalItemsCount}
@@ -92,21 +88,14 @@ export function Main() {
         data={data}
         renderItem={({ item }) => (
           <View
-            style={{
-              flexDirection: "row",
-              marginHorizontal: 2,
-              paddingHorizontal: 10,
-              borderWidth: 1,
-              borderColor: colors.gray,
-              marginTop: 10,
-              padding: 18,
-              alignItems: "center",
-              backgroundColor: item.completed ? colors.lightgreen : "white",
-              width: "100%",
-              justifyContent: "space-between",
-            }}
+            style={
+              item.completed ? styles.completedItem : styles.incompleteItem
+            }
           >
             <CheckBox
+              onCheckColor="white"
+              onFillColor={colors.secondary}
+              onTintColor={colors.secondary}
               style={styles.checkbox}
               boxType="square"
               disabled={false}
@@ -130,7 +119,7 @@ export function Main() {
             <Text
               style={{
                 flex: 1,
-                color: colors.gray,
+                color: item.completed ? colors.secondary : "gray",
                 textDecorationLine: item.completed ? "line-through" : "none",
               }}
             >
@@ -199,22 +188,52 @@ export function Main() {
         />
       </View>
 
-      <Modal
-        presentationStyle="formSheet"
-        animationType="slide"
-        visible={!!editingItem}
-        onRequestClose={() => {
-          setEditingItem(undefined);
-        }}
-      >
-        <View style={{ flex: 1 }}>
-          <TextInput defaultValue={editingItem?.title} />
+      {editingItem && (
+        <Modal
+          presentationStyle="formSheet"
+          animationType="slide"
+          visible={!!editingItem}
+          onRequestClose={() => {
+            setEditingItem(undefined);
+          }}
+        >
+          <View style={styles.editModalContainer}>
+            <Text style={styles.editModalHeader}>Editar nome do item :</Text>
+            <View style={styles.editModalInput}>
+              <TextInput
+                onChangeText={(text) => {
+                  setEditingItem((prevItem) => {
+                    if (prevItem) {
+                      return { ...prevItem, title: text };
+                    }
+                    return prevItem;
+                  });
+                }}
+                defaultValue={editingItem?.title || ""}
+              />
 
-          <Pressable onPress={() => setEditingItem(undefined)}>
-            <Text>Close Editing</Text>
-          </Pressable>
-        </View>
-      </Modal>
+              <Pressable style={styles.editModalClose}>
+                <MaterialIcons
+                  onPress={() => {
+                    console.log(editingItem);
+                    updateListItemName(editingItem?.id, editingItem?.title);
+                    setEditingItem(undefined);
+                  }}
+                  name="check"
+                  size={24}
+                  color={colors.secondary}
+                />
+                <MaterialIcons
+                  onPress={() => setEditingItem(undefined)}
+                  name="highlight-remove"
+                  size={24}
+                  color="red"
+                />
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+      )}
     </KeyboardAvoidingView>
   );
 }
@@ -228,11 +247,42 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 12,
   },
+  headerTitle: {
+    color: "white",
+    fontFamily: fontsVariant.body.fontFamily,
+    fontSize: fontsVariant.body.fontSize,
+  },
   checkbox: {
     height: 20,
   },
   emptyList: {
     textAlign: "center",
+  },
+  completedItem: {
+    flexDirection: "row",
+    marginHorizontal: 2,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: colors.gray,
+    marginTop: 10,
+    padding: 18,
+    alignItems: "center",
+    backgroundColor: colors.lightgreen,
+    width: "100%",
+    justifyContent: "space-between",
+  },
+  incompleteItem: {
+    flexDirection: "row",
+    marginHorizontal: 2,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: colors.gray,
+    marginTop: 10,
+    padding: 18,
+    alignItems: "center",
+    backgroundColor: "white",
+    width: "100%",
+    justifyContent: "space-between",
   },
   newItemInputContainer: {
     backgroundColor: colors.primary,
@@ -255,5 +305,30 @@ const styles = StyleSheet.create({
     borderColor: "white",
     backgroundColor: "white",
     borderRadius: 10,
+  },
+  editModalContainer: {
+    flex: 1,
+    padding: 20,
+    alignItems: "center",
+    backgroundColor: colors.primary,
+  },
+  editModalHeader: {
+    padding: 10,
+    textAlign: "center",
+    color: "white",
+    fontSize: 20,
+  },
+  editModalInput: {
+    backgroundColor: colors.lightgreen,
+    borderRadius: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    gap: 10,
+    width: "80%",
+  },
+  editModalClose: {
+    flexDirection: "row",
+    gap: 5,
   },
 });
