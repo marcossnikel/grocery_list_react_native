@@ -13,7 +13,7 @@ cd react-native-grocery-list
 
 npm install
 
-npm run ios` or `npm run android` to run the project.
+npm run ios or npm run android to run the project.
 ```
 
 - Expo run was not enabled because some of the libraries go beyond Expo Go. One possible solution would be to generate a build via EAS with a certificate. However, for such action, you need a paid Apple Developer account or be associated with an official team.
