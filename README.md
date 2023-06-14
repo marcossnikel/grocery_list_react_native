@@ -6,7 +6,7 @@
 
 ### Running locally 🚀🚀🚀
 
-1. git clone git@github.com:marcossnikel/react-native-grocery-list.git
+1. git clone `git@github.com:marcossnikel/react-native-grocery-list.git`
 
 2. Install the necessary dependencies
    - `npm install`
