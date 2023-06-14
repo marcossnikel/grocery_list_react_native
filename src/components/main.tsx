@@ -109,7 +109,9 @@ export function Main() {
                         completed: !itemToToggle.completed,
                       };
                     }
-
+                    Haptics.notificationAsync(
+                      Haptics.NotificationFeedbackType.Success
+                    );
                     return itemToToggle;
                   })
                 );
