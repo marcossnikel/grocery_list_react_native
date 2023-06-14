@@ -6,13 +6,15 @@
 
 ### Running locally 🚀🚀🚀
 
-1. git clone `git@github.com:marcossnikel/react-native-grocery-list.git`
+```
+git clone git@github.com:marcossnikel/react-native-grocery-list.git
 
-2. Install the necessary dependencies
-   - `npm install`
-3. To run the project, you can use either of the following commands:
-   - `npm run ios`
-   - `npm run android`
+cd react-native-grocery-list
+
+npm install
+
+npm run ios` or `npm run android` to run the project.
+```
 
 - Expo run was not enabled because some of the libraries go beyond Expo Go. One possible solution would be to generate a build via EAS with a certificate. However, for such action, you need a paid Apple Developer account or be associated with an official team.
 
@@ -25,8 +27,7 @@
 5. [uuid](https://www.npmjs.com/package/uuid)
 6. [Expo Vector Icons](https://docs.expo.dev/guides/icons/)
 7. [Haptics](https://docs.expo.dev/versions/latest/sdk/haptics/)
-
-- For styling, the default `Stylesheet.create` from React Native was used.
+8. Default StyleSheet from React Native for style
 
 #### The app is an application where the user can manage a shopping list to organize their purchases. The user can perform various actions, such as:
 
