@@ -46,19 +46,19 @@
 
 ### Splash Screen
 
-   <img src="splash-screen.png" width="200px" height="400px" alt="splash screenimage example"/>
+   <img src="/assets/splash-screen.png" width="200px" height="400px" alt="splash screenimage example"/>
 
 ### Initial Screen
 
-   <img src="initial-screen.png" width="200px" height="400px" alt="initial screen image example"/>
+   <img src="/assets/initial-screen.png" width="200px" height="400px" alt="initial screen image example"/>
 
 ### List with items
 
-   <img src="items-filled.png" width="200px" height="400px" alt="list filled image example"/>
+   <img src="/assets/items-filled.png" width="200px" height="400px" alt="list filled image example"/>
 
 ### Editing an item
 
-   <img src="editing-item.png" width="200px" height="400px" alt="editing image example"/>
+   <img src="/assets/editing-item.png" width="200px" height="400px" alt="editing image example"/>
 
 ## About Choosed Stack
 
